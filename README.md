@@ -1,6 +1,7 @@
 # RF-3000 Spectrometer - Python code
-Python code for the low-cost [https://www.ebay.co.uk/itm/353054396029](RF-3000 Spectrum analyser).
+Python code for the low-cost RF-3000 Spectrum analyser.
 
+https://www.ebay.co.uk/itm/353054396029
 
 ![RF-3000](figs/rf-3000.jpg)
 
