@@ -23,15 +23,13 @@ For example:
 % python3 spectrometer.py /dev/cu.usbserial-14120 80 103 0.1 test.csv
 ```
 
-Then just follow the prompts in the program.
+The program now automatically sets the start, end and step frequencies on the spectrometer and then tells it to do a single sweep.
 
 ```
 si@Sis-Mac cli % python3 spectrometer.py /dev/cu.usbserial-14120 80 103 0.1 test.csv
 Expecting 230 readings
 Connecting to: /dev/cu.usbserial-14120
 Connected to Spectrometer
-Make sure the spectroeter screen says STOP. Press ENTER to continue.
-Waiting for data. Press RUN/STOP button on spectrometer.
 80.0,-78.000801
 80.1,-78.600802
 80.19999999999999,-80.800803
