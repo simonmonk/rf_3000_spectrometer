@@ -1,5 +1,6 @@
 import serial
 import sys
+from time import sleep
 
 if len(sys.argv) != 6:
     print(f"Usage: spectrometer.py <port> <start f MHz> <end f MHz> <step MHz>")
@@ -27,8 +28,31 @@ except:
 file = open(file_name, 'w')
 file.write("f, db\n")
 
-input("Make sure the spectroeter screen says STOP. Press ENTER to continue.")
-print("Waiting for data. Press RUN/STOP button on spectrometer.")
+# scraped from interface⸮stop#w10015000#w20020000#w30000100#start#
+
+def stop_spectrometer():
+    sleep(0.1)
+    ser.write(b'#stop#') 
+    sleep(0.1)
+
+def start_spectrometer():
+    sleep(0.1)
+    ser.write(b'#start#') 
+    sleep(0.1)
+
+
+def set_param(param, value):
+    cmd = '#' + param + "{:07d}".format(value) + '#'
+    ser.write(cmd.encode('utf-8'))
+    sleep(0.1)
+
+stop_spectrometer()
+set_param('w1', int(start_f * 1000))
+set_param('w2', int(end_f * 1000))
+set_param('w3', int(step * 1000))
+start_spectrometer()
+
+
 f = start_f
 n = 0
 while True:
@@ -48,6 +72,8 @@ while True:
     print(line)
     file.write(line + "\n")
     n += 1
+
+stop_spectrometer()
 print(f"Read {n} readings.")
 file.close()
 print(f"Now open {file_name} in your favorite spreadsheet")
