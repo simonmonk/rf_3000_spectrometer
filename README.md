@@ -5,6 +5,9 @@ https://www.ebay.co.uk/itm/353054396029
 
 ![RF-3000](figs/rf-3000.jpg)
 
+# Prerequisites
+The code relies on the Pyserial module.
+
 # Command Line Interface
 
 This handy little spectrum analyzer came with a big lump of Windows code. Rather than run it in a VM, I wrote a bit of Python to capture the data that it spits out over USB.
